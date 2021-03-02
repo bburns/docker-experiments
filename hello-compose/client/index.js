@@ -7,10 +7,12 @@ const config = { host, port }
 console.log(`Creating client socket...`)
 const socket = new net.Socket()
 
-console.log(`Connecting to server`, config, `...`)
-socket.connect(config, () => {
-  console.log(`Sending text...`)
-  socket.write('Hello, server')
-  console.log(`Ending socket...`)
-  socket.end()
-})
+setTimeout(() => {
+  console.log(`Connecting to server`, config, `...`)
+  socket.connect(config, () => {
+    console.log(`Sending text...`)
+    socket.write('Hello, server')
+    console.log(`Ending socket...`)
+    socket.end()
+  })
+}, 1000)
