@@ -7,6 +7,8 @@ services:
     environment:
       - HOST=server
       - PORT=7879
+    networks:
+      - ladder99
 
   client:
     container_name: client
@@ -19,3 +21,9 @@ services:
     depends_on:
       server:
         condition: service_started
+    networks:
+      - ladder99
+
+networks:
+  ladder99:
+    name: ladder99
