@@ -14,15 +14,16 @@ server.on('connection', function (socket) {
   socket.write('Hello, client.')
 
   // receive data from client on the socket
-  socket.on('data', function (chunk) {
-    console.log(`Data received from client: ${chunk.toString()}`)
+  socket.on('data', function (buffer) {
+    console.log(`Data received from client: ${buffer.toString()}`)
   })
 
   // When the client requests to end the TCP connection with the server, the server
   // ends the connection.
-  //. nowork?
   socket.on('end', function () {
-    console.log('Closing connection with the client')
+    console.log(`client requesting to end connection`)
+    console.log(`close server...`)
+    server.close()
   })
 
   // catch any errors
